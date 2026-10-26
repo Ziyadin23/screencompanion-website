@@ -1,0 +1,64 @@
+---
+import Icon from './Icon.astro';
+import { content, localPath, type Locale } from '../i18n/content';
+import { product } from '../data/product';
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const copy = content[locale];
+const links = [
+  { href: '#features', label: copy.nav.features },
+  { href: '#how-it-works', label: copy.nav.how },
+  { href: '#faq', label: copy.nav.faq },
+];
+---
+<header class="site-header" id="top">
+  <a class="brand" href={localPath(locale)} aria-label="ScreenCompanion">
+    <span class="brand-mark" aria-hidden="true">SC<span class="brand-mark-dot"></span></span>
+    <span class="brand-name">Screen<span>Companion</span></span>
+  </a>
+  <nav class="desktop-nav" aria-label={copy.nav.label}>
+    {links.map(link => <a href={link.href}>{link.label}</a>)}
+  </nav>
+  <a class="header-github" href={product.repository} aria-label={copy.nav.github} title={copy.nav.github}>
+    <Icon name="github" size={22} />
+  </a>
+  <nav class="language-switch" aria-label={copy.nav.language}>
+    <a href={localPath('en')} lang="en" hreflang="en" aria-label="English" aria-current={locale === 'en' ? 'page' : undefined}>EN</a>
+    <span aria-hidden="true">/</span>
+    <a href={localPath('ru')} lang="ru" hreflang="ru" aria-label="Русский" aria-current={locale === 'ru' ? 'page' : undefined}>RU</a>
+  </nav>
+  <a class="header-download" href={product.release.exe} aria-label={copy.nav.download}>
+    <span>{copy.hero.download}</span><Icon name="download" size={17} />
+  </a>
+  <details class="mobile-menu">
+    <summary><span>{copy.nav.menu}</span><span class="menu-lines" aria-hidden="true"></span></summary>
+    <nav class="mobile-nav" aria-label={copy.nav.mobile}>
+      {links.map(link => <a href={link.href}>{link.label}</a>)}
+      <a href={product.repository}>GitHub<Icon name="external" size={17} /></a>
+      <a class="mobile-nav-download" href={product.release.exe}>{copy.hero.download}<Icon name="download" size={18} /></a>
+    </nav>
+  </details>
+</header>
+
+<script>
+  const menu = document.querySelector<HTMLDetailsElement>('.mobile-menu');
+  const summary = menu?.querySelector('summary');
+
+  if (menu && summary) {
+    menu.querySelectorAll<HTMLAnchorElement>('a').forEach(link => {
+      link.addEventListener('click', () => { menu.open = false; });
+    });
+    menu.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && menu.open) {
+        menu.open = false;
+        summary.focus();
+      }
+    });
+    document.addEventListener('click', event => {
+      if (event.target instanceof Node && !menu.contains(event.target)) menu.open = false;
+    });
+    window.matchMedia('(min-width: 1101px)').addEventListener('change', event => {
+      if (event.matches) menu.open = false;
+    });
+  }
+</script>
