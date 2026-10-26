@@ -55,3 +55,5 @@ BASE_PATH=/ScreenCompanion/ npm run preview
 `SITE_URL` is optional and enables canonical and alternate-language metadata. `BASE_PATH` defaults to `/` and is included in language links, the favicon, and generated assets. The GitHub Actions workflow reads both values from GitHub Pages settings automatically. Preview using the same base path as the build, then visit `http://localhost:4321/ScreenCompanion/`. When using another provider's project settings, set the variables there rather than in your shell. Local development continues to use `/` by default.
 
 Manrope is distributed under the SIL Open Font License. The copyright notice and license are included in `public/manrope-license.txt` and in the static build.
+
+The GitHub mark comes from Primer Octicons, distributed under the MIT License. Its license is included in `public/octicons-license.txt` and in the static build.
