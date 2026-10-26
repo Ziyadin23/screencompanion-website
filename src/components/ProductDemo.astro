@@ -1,0 +1,37 @@
+---
+import Icon from './Icon.astro';
+import { demonstrations } from '../data/demo';
+import type { Locale } from '../i18n/content';
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const demo = demonstrations[locale];
+const first = demo.examples[0];
+---
+<div class="product-demo" data-demo data-examples={JSON.stringify(demo.examples)}>
+  <div class="demo-stage">
+    <div class="demo-scene" data-ui>
+      <div class="question-sheet">
+        <div class="question-heading"><Icon name="capture" size={18} /><span>{demo.questionLabel}</span></div>
+        <div class="question-content">
+          <p class="demo-prompt" data-prompt>{first.prompt}</p>
+          <p class="demo-question" data-question>{first.content}</p>
+        </div>
+      </div>
+      <div class="answer-panel">
+        <div class="answer-heading"><span class="app-monogram" aria-hidden="true">SC</span><span>ScreenCompanion</span><Icon name="check" size={18} /></div>
+        <div class="answer-content" aria-live="polite" aria-atomic="true">
+          <p class="answer-label">{demo.answerLabel}</p>
+          <p class="demo-answer" data-answer>{first.answer}</p>
+          <p class="demo-explanation" data-explanation>{first.explanation}</p>
+        </div>
+      </div>
+    </div>
+    <button class="demo-trigger" type="button" data-demo-trigger hidden>
+      <span>{demo.action}</span>
+      <span class="shortcut-keys" aria-hidden="true"><kbd>Ctrl</kbd><kbd>Alt</kbd><kbd>Space</kbd></span>
+      <Icon name="external" size={18} />
+    </button>
+    <span class="demo-example" data-example>{first.name}</span>
+  </div>
+  <p class="demo-caption">{demo.caption}</p>
+</div>

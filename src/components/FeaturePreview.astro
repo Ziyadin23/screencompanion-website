@@ -1,0 +1,29 @@
+---
+import Icon from './Icon.astro';
+import type { Locale } from '../i18n/content';
+interface Props { locale: Locale; kind: 'answer' | 'question' | 'settings' }
+const { locale, kind } = Astro.props;
+const ru = locale === 'ru';
+---
+<div class:list={['feature-preview', `preview--${kind}`]} data-ui>
+  {kind === 'answer' && <div class="preview-answer">
+    <div class="preview-toolbar"><span class="app-monogram" aria-hidden="true">SC</span><span>ScreenCompanion</span><Icon name="check" size={18} /></div>
+    <div class="preview-answer-body"><p>{ru ? 'Найдите значение x' : 'Find the value of x'}</p><p class="preview-formula">x = 4</p><p>{ru ? 'Вычтите 6 и разделите на 2.' : 'Subtract 6, then divide by 2.'}</p></div>
+    <div class="preview-footer"><Icon name="capture" size={18} /><span>Ctrl + Alt + Space</span></div>
+  </div>}
+  {kind === 'question' && <div class="preview-question">
+    <div class="preview-toolbar"><span class="app-monogram" aria-hidden="true">SC</span><span>{ru ? 'Ваш вопрос' : 'Your question'}</span><Icon name="type" size={18} /></div>
+    <div class="preview-question-body"><p>{ru ? 'Объясни решение по шагам.' : 'Explain the solution, step by step.'}</p><span class="preview-caret" aria-hidden="true"></span></div>
+    <div class="preview-footer"><span>Ctrl + Enter</span><span class="preview-send" aria-hidden="true"><Icon name="external" size={20} /></span></div>
+  </div>}
+  {kind === 'settings' && <div class="preview-settings">
+    <div class="preview-toolbar"><Icon name="sliders" size={18} /><span>{ru ? 'Настройки панели' : 'Panel settings'}</span><span>Ctrl + I</span></div>
+    <div class="preview-settings-body">
+      <div><span>{ru ? 'Размер шрифта' : 'Font size'}</span><span>18</span></div>
+      <div class="preview-range" aria-hidden="true"><span></span></div>
+      <div><span>{ru ? 'Прозрачность' : 'Transparency'}</span><span>90%</span></div>
+      <div class="preview-range preview-range--long" aria-hidden="true"><span></span></div>
+      <div><span>{ru ? 'Цвета панели' : 'Panel colors'}</span><span class="preview-swatches" aria-hidden="true"><i></i><i></i><i></i></span></div>
+    </div>
+  </div>}
+</div>

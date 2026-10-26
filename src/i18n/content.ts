@@ -26,7 +26,7 @@ const en: Copy = {
   hero: {
     platform: 'A little help for your Windows screen',
     title: ['Answers from', 'your screen.'],
-    description: 'A question catches your eye. A shortcut brings the answer. Meet the small AI companion that stays by your side, whatever’s on your screen.',
+    description: 'ScreenCompanion brings AI answers to a small Windows panel, from a question on your screen or one you type.',
     download: 'Download for Windows',
     how: 'See how it works',
     note: 'Portable app. No installer. Your own API key.',
@@ -42,7 +42,7 @@ const en: Copy = {
   },
   shortcut: { title: 'A question. A shortcut. An answer.', description: 'Capture the question on your active monitor.', action: 'Press' },
   features: {
-    title: 'Less switching.\nMore understanding.',
+    title: 'Stay with\nyour screen.',
     description: 'Stay with what you’re doing. Let your companion take a look.',
     items: [
       { title: 'Ask what you see', description: 'Use a shortcut to capture your active monitor. SC finds the question and brings the answer into a small, selectable panel.' },
@@ -51,12 +51,12 @@ const en: Copy = {
     ],
   },
   providers: {
-    title: 'Your favorite models.\nYour choice.',
+    title: 'Your model.\nYour choice.',
     description: 'Connect a compatible model from a supported provider.',
     note: 'Bring your own API key. Provider usage charges may apply.',
   },
   how: {
-    title: 'A small setup.\nA helping hand.',
+    title: 'Up and running.',
     description: 'From download to your first question in three steps.',
     guide: 'Read the setup guide',
     steps: [
@@ -66,12 +66,12 @@ const en: Copy = {
     ],
   },
   privacy: {
-    title: 'A companion,\nwith clear boundaries.',
+    title: 'Clear boundaries.',
     description: 'SC keeps no screenshot or answer history. Your keys and settings are encrypted for your Windows account. Captured content is sent to your chosen AI provider, whose retention policies apply.',
     link: 'Read about privacy',
   },
   faq: {
-    title: 'A few things\nyou might wonder.',
+    title: 'Good questions.',
     description: 'The useful details, before you get started.',
     help: 'Something else? Ask on GitHub',
     items: [
@@ -84,7 +84,7 @@ const en: Copy = {
     ],
   },
   download: {
-    title: ['A little companion.', 'A fresh perspective.'],
+    title: ['A little help.', 'At your side.'],
     description: 'Bring a helping hand to your desktop.',
     button: 'Download for Windows',
     zip: 'Prefer a ZIP?',
@@ -103,8 +103,8 @@ const ru: Copy = {
   nav: { label: 'Основная навигация', mobile: 'Мобильная навигация', footer: 'Навигация в подвале', menu: 'Меню', language: 'Язык', features: 'Возможности', how: 'Как это работает', faq: 'Вопросы', download: 'Скачать ScreenCompanion', github: 'Открыть репозиторий на GitHub' },
   hero: {
     platform: 'Немного помощи вашему экрану Windows',
-    title: ['Вопрос на экране?', 'Ответ рядом.'],
-    description: 'Заметили вопрос? Нажмите сочетание клавиш — и получите ответ. Небольшой ИИ-помощник всегда рядом, чем бы вы ни занимались.',
+    title: ['Вопрос на ПК?', 'Ответ рядом.'],
+    description: 'ScreenCompanion отвечает на вопросы с экрана или на ваши собственные в небольшой панели Windows.',
     download: 'Скачать для Windows',
     how: 'Как это работает',
     note: 'Без установки. С вашим API-ключом.',
@@ -120,7 +120,7 @@ const ru: Copy = {
   },
   shortcut: { title: 'Вопрос. Сочетание клавиш. Ответ.', description: 'Захватите вопрос на активном мониторе.', action: 'Нажмите' },
   features: {
-    title: 'Меньше переключений.\nБольше ясности.',
+    title: 'Оставайтесь\nв своём деле.',
     description: 'Оставайтесь в своём деле. Помощник взглянет на экран вместе с вами.',
     items: [
       { title: 'Спросите о том, что видите', description: 'Нажмите сочетание клавиш, чтобы захватить активный монитор. SC найдёт вопрос и покажет ответ в небольшой панели, где можно выделять текст.' },
@@ -129,12 +129,12 @@ const ru: Copy = {
     ],
   },
   providers: {
-    title: 'Любимые модели.\nВаш выбор.',
+    title: 'Ваша модель.\nВаш выбор.',
     description: 'Подключите совместимую модель одного из поддерживаемых провайдеров.',
     note: 'Нужен ваш API-ключ. Провайдер может взимать плату за запросы.',
   },
   how: {
-    title: 'Простая настройка.\nПомощь рядом.',
+    title: 'Начните с вопроса.',
     description: 'От загрузки до первого вопроса — три шага.',
     guide: 'Открыть руководство по настройке',
     steps: [
@@ -144,12 +144,12 @@ const ru: Copy = {
     ],
   },
   privacy: {
-    title: 'Ваш помощник.\nПонятные границы.',
+    title: 'Понятные границы.',
     description: 'SC не хранит историю снимков и ответов. Ключи и настройки зашифрованы для вашей учётной записи Windows. Содержимое экрана отправляется выбранному ИИ-провайдеру, и к нему применяются правила хранения этого провайдера.',
     link: 'Подробнее о конфиденциальности',
   },
   faq: {
-    title: 'Возможно,\nвам интересно.',
+    title: 'Частые вопросы.',
     description: 'Полезные подробности перед первым запуском.',
     help: 'Остались вопросы? Напишите на GitHub',
     items: [
@@ -162,7 +162,7 @@ const ru: Copy = {
     ],
   },
   download: {
-    title: ['Маленький помощник.', 'Свежий взгляд.'],
+    title: ['Помощь рядом.', 'Всё яснее.'],
     description: 'Немного помощи вашему рабочему столу.',
     button: 'Скачать для Windows',
     zip: 'Скачать ZIP',

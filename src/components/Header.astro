@@ -13,8 +13,8 @@ const links = [
 ---
 <header class="site-header" id="top">
   <a class="brand" href={localPath(locale)} aria-label="ScreenCompanion">
-    <span class="brand-mark" aria-hidden="true">SC<span class="brand-mark-dot"></span></span>
-    <span class="brand-name">Screen<span>Companion</span></span>
+    <span class="brand-mark" aria-hidden="true">SC</span>
+    <span class="brand-name">ScreenCompanion</span>
   </a>
   <nav class="desktop-nav" aria-label={copy.nav.label}>
     {links.map(link => <a href={link.href}>{link.label}</a>)}
@@ -24,7 +24,6 @@ const links = [
   </a>
   <nav class="language-switch" aria-label={copy.nav.language}>
     <a href={localPath('en')} lang="en" hreflang="en" aria-label="English" aria-current={locale === 'en' ? 'page' : undefined}>EN</a>
-    <span aria-hidden="true">/</span>
     <a href={localPath('ru')} lang="ru" hreflang="ru" aria-label="Русский" aria-current={locale === 'ru' ? 'page' : undefined}>RU</a>
   </nav>
   <a class="header-download" href={product.release.exe} aria-label={copy.nav.download}>

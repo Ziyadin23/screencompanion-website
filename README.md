@@ -1,6 +1,6 @@
 # ScreenCompanion website
 
-A static English/Russian landing website for [ScreenCompanion](https://github.com/Ziyadin23/ScreenCompanion). Built with Astro, TypeScript, custom CSS, and self-hosted Manrope. The split cyan/blush hero, black borders, and original SVG desktop illustration follow the supplied design reference.
+A static English/Russian landing website for [ScreenCompanion](https://github.com/Ziyadin23/ScreenCompanion). Built with Astro, TypeScript, custom CSS, and self-hosted Manrope. Large cyan, blush, yellow, and ink color fields carry the product story, with a working shortcut demonstration and readable interface previews.
 
 ## Local development
 
@@ -28,7 +28,9 @@ When reviewing visually, check English and Russian at 1440px, 1024px, 768px, 390
 
 - `src/i18n/content.ts` contains matching, typed English and Russian copy. `/` serves English and `/ru/` serves Russian. Language selection uses ordinary links and works without JavaScript.
 - `src/data/product.ts` is the single place for release numbers, EXE/ZIP downloads, release notes, documentation, and provider names. Download buttons currently point to the published **v0.4.14** release. Recheck the project's published release before updating these fields together. The beta is linked separately and is not presented as a published download.
-- `src/styles/global.css` defines the visual tokens and responsive layout. The desktop scene is an original SVG component with localized text and an accessible description.
+- `src/styles/global.css` defines the visual tokens, responsive layout, focus states, and reduced-motion support.
+- `src/components/ProductDemo.astro` and `src/data/demo.ts` provide three localized, deterministic examples. The preview button, Enter, and Ctrl + Alt + Space while focused in the preview cycle the examples. It makes no API calls and works with a static first example when JavaScript is disabled.
+- `src/components/FeaturePreview.astro` shows illustrative answer, question, and panel settings fragments. These are original HTML previews, not screenshots of the shipped application. The example font size, transparency, and provider are illustrative settings, not asserted defaults.
 
 The website does not collect API keys, capture screens, make AI requests, or store visitor data. The FAQ explains the desktop application's provider and data-processing requirements.
 
