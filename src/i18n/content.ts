@@ -13,6 +13,7 @@ interface Copy {
   privacy: { title: string; description: string; link: string };
   faq: { title: string; description: string; help: string; items: { question: string; answer: string }[] };
   download: { title: [string, string]; description: string; button: string; zip: string; notes: string; detail: string };
+  beta: { installer: string; zip: string; notes: string; description: string; guide: string };
   footer: { description: string; guide: string; issue: string; beta: string; madeBy: string; top: string };
 }
 
@@ -30,7 +31,7 @@ const en: Copy = {
     download: 'Download for Windows',
     how: 'See how it works',
     note: 'Portable app. No installer. Your own API key.',
-    release: 'Latest release',
+    release: 'Latest stable release',
   },
   art: {
     alt: 'An illustrated desktop with the equation 2x + 6 = 14 and a small ScreenCompanion panel explaining that x equals 4.',
@@ -80,18 +81,24 @@ const en: Copy = {
       { question: 'What happens to my screen captures?', answer: 'A request takes a fresh capture of one monitor. Captured content leaves your PC for processing by your chosen provider. Depending on the pipeline, this can include the full monitor, extracted question content, and relevant crops. SC keeps no screenshot or answer history. Your provider’s retention policies still apply.' },
       { question: 'Can I change the keyboard shortcuts?', answer: 'Yes. Open Settings with Ctrl + I to change them. The defaults are Ctrl + Alt + Space to ask about the screen, Ctrl + Enter to type a question, and Ctrl + / to hide or show the panel. The tray menu also offers the main controls.' },
       { question: 'Can other people see the answer panel in a recording?', answer: 'Capture exclusion is best effort and depends on the recording or screen-sharing app. The tray icon remains visible. Check the actual received stream or saved recording before relying on exclusion; the current release’s whole-monitor recording paths remain unverified.' },
+      { question: 'Can I choose how SC processes a screenshot?', answer: 'Yes. In Settings → Models & API, choose Thorough (locate, extract, answer; normally three API calls), Balanced (locate and extract together, then answer; two calls), or Direct screenshot (one call, DeepSeek Flash only). Direct sends the full monitor to answering. DeepSeek Pro is for text-only answers. These options are available in stable v0.4.14 and the published beta.' },
+      { question: 'Is there a Linux version?', answer: 'Linux support is in development in the unpublished v0.5.0-beta.7 source, targeting Fedora 44 x86-64 with Hyprland Wayland. No Linux RPM has been published, and interactive desktop verification is unfinished. Published stable and beta downloads are for Windows x64.' },
       { question: 'Where can I get help or report an issue?', answer: 'The user guide covers setup, model selection, and common network problems. If a request fails, use the diagnostic code and report ID from the panel when opening a GitHub issue. Avoid including API keys or private screen content in your report.' },
     ],
   },
   download: {
     title: ['A little help.', 'At your side.'],
     description: 'Bring a helping hand to your desktop.',
-    button: 'Download for Windows',
+    button: 'Download stable for Windows',
     zip: 'Prefer a ZIP?',
     notes: 'Release notes',
     detail: 'Windows x64. Internet and your own API key required.',
   },
-  footer: { description: 'A little clarity, right where you are.', guide: 'User guide', issue: 'Report an issue', beta: 'Next version in development', madeBy: 'Made by Ziyadin', top: 'Back to top' },
+  beta: {
+    installer: 'Download beta installer', zip: 'Portable beta ZIP', notes: 'Beta release notes', guide: 'Beta setup guide',
+    description: 'Published Windows beta with service selection at first launch, a per-user installer and Settings → Updates. No administrator rights required. Close older SC versions before installation. Portable builds require manual updates. Checked on Windows 11; Windows 10, fresh-machine setup, live answer quality and recording exclusion still need verification.',
+  },
+  footer: { description: 'A little clarity, right where you are.', guide: 'User guide', issue: 'Report an issue', beta: 'Published Windows beta', madeBy: 'Made by Ziyadin', top: 'Back to top' },
 };
 
 const ru: Copy = {
@@ -108,7 +115,7 @@ const ru: Copy = {
     download: 'Скачать для Windows',
     how: 'Как это работает',
     note: 'Без установки. С вашим API-ключом.',
-    release: 'Последний релиз',
+    release: 'Последний стабильный релиз',
   },
   art: {
     alt: 'Иллюстрация рабочего стола с уравнением 2x + 6 = 14 и небольшой панелью ScreenCompanion, объясняющей, что x равен 4.',
@@ -158,18 +165,24 @@ const ru: Copy = {
       { question: 'Что происходит со снимками экрана?', answer: 'При запросе создаётся свежий снимок одного монитора. Содержимое передаётся выбранному провайдеру для обработки. В зависимости от режима это может быть полный снимок монитора, извлечённый вопрос и нужные фрагменты. SC не хранит историю снимков или ответов. Действуют правила хранения данных вашего провайдера.' },
       { question: 'Можно ли изменить сочетания клавиш?', answer: 'Да. Откройте настройки сочетанием Ctrl + I. По умолчанию Ctrl + Alt + Space задаёт вопрос по экрану, Ctrl + Enter открывает ввод своего вопроса, а Ctrl + / скрывает или показывает панель. Основные команды также доступны через меню в системном трее.' },
       { question: 'Будет ли панель видна при записи экрана?', answer: 'Исключение панели из захвата работает по возможности и зависит от программы записи или демонстрации экрана. Значок в трее остаётся видимым. Проверьте реальную трансляцию или готовую запись, прежде чем полагаться на эту функцию: захват всего монитора в текущем релизе ещё не проверен.' },
+      { question: 'Можно ли выбрать способ обработки снимка?', answer: 'Да. В Settings → Models & API доступны Thorough (поиск, извлечение, ответ — обычно три API-запроса), Balanced (поиск и извлечение вместе, затем ответ — два запроса) и Direct screenshot (один запрос, только DeepSeek Flash). Direct отправляет весь монитор сразу модели ответа. DeepSeek Pro подходит для текстовых ответов без изображений. Эти режимы есть в стабильной v0.4.14 и опубликованной бете.' },
+      { question: 'Есть ли версия для Linux?', answer: 'Поддержка Linux разрабатывается в исходном коде неопубликованной v0.5.0-beta.7 для Fedora 44 x86-64 с Hyprland Wayland. Linux RPM ещё не опубликован, проверка на целевом рабочем столе не завершена. Опубликованные стабильная и бета-версии предназначены для Windows x64.' },
       { question: 'Где найти помощь или сообщить об ошибке?', answer: 'В руководстве описаны настройка, выбор моделей и распространённые проблемы с сетью. При ошибке запроса укажите диагностический код и ID отчёта из панели в обращении на GitHub. Не публикуйте API-ключи и личные данные с экрана.' },
     ],
   },
   download: {
     title: ['Помощь рядом.', 'Всё яснее.'],
     description: 'Немного помощи вашему рабочему столу.',
-    button: 'Скачать для Windows',
+    button: 'Скачать стабильную версию',
     zip: 'Скачать ZIP',
     notes: 'Описание релиза',
     detail: 'Windows x64. Нужны интернет и ваш API-ключ.',
   },
-  footer: { description: 'Больше ясности там, где вы сейчас.', guide: 'Руководство', issue: 'Сообщить об ошибке', beta: 'Следующая версия в разработке', madeBy: 'Создал Ziyadin', top: 'Наверх' },
+  beta: {
+    installer: 'Скачать установщик беты', zip: 'Портативная бета в ZIP', notes: 'Описание бета-релиза', guide: 'Руководство для беты',
+    description: 'Опубликованная бета для Windows: выбор сервиса при первом запуске, установка для текущего пользователя и Settings → Updates. Права администратора не нужны. Перед установкой закройте старую версию SC. Портативная версия обновляется вручную. Проверена на Windows 11; Windows 10, запуск на чистом компьютере, качество ответов и исключение из записи ещё требуют проверки.',
+  },
+  footer: { description: 'Больше ясности там, где вы сейчас.', guide: 'Руководство', issue: 'Сообщить об ошибке', beta: 'Опубликованная бета для Windows', madeBy: 'Создал Ziyadin', top: 'Наверх' },
 };
 
 export const content: Record<Locale, Copy> = { en, ru };

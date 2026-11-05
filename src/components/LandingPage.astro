@@ -77,13 +77,18 @@ const privacyFacts = ru
       <section class="download-panel section-pad" id="download" aria-labelledby="download-title">
         <div class="download-copy"><h2 id="download-title" data-reveal>{copy.download.title.map(line => <span>{line}</span>)}</h2><p data-reveal>{copy.download.description}</p></div>
         <div class="download-actions" data-reveal><a class="button button--cyan" href={product.release.exe}><Icon name="windows" size={18} /><span>{copy.download.button}</span><Icon name="download" size={18} /></a><div class="download-secondary"><a href={product.release.zip}>{copy.download.zip}</a><a href={product.release.notes}>{copy.download.notes}</a></div><p>v{product.release.version}. {copy.download.detail}</p></div>
+        <div class="beta-download" data-reveal>
+          <h3>{copy.footer.beta} · v{product.beta.version}</h3>
+          <p>{copy.beta.description}</p>
+          <div class="download-secondary"><a href={product.beta.installer}>{copy.beta.installer}</a><a href={product.beta.zip}>{copy.beta.zip}</a><a href={product.beta.notes}>{copy.beta.notes}</a><a href={product.beta.guide}>{copy.beta.guide}</a></div>
+        </div>
       </section>
     </main>
 
     <footer class="site-footer">
       <a class="footer-wordmark" href="#top" aria-label="ScreenCompanion">ScreenCompanion</a>
       <div class="footer-main"><p>{copy.footer.description}</p><nav class="footer-links" aria-label={copy.nav.footer}><a href={product.release.guide}>{copy.footer.guide}</a><a href={product.issues}>{copy.footer.issue}</a><a href={product.repository}>GitHub<Icon name="external" size={16} /></a></nav></div>
-      <div class="footer-bottom"><a href="https://github.com/Ziyadin23">{copy.footer.madeBy}</a><a class="beta-link" href={product.beta}>{copy.footer.beta}<Icon name="external" size={13} /></a><a class="back-top" href="#top">{copy.footer.top}<Icon name="up" size={16} /></a></div>
+      <div class="footer-bottom"><a href="https://github.com/Ziyadin23">{copy.footer.madeBy}</a><a class="beta-link" href={product.beta.notes}>{copy.footer.beta}<Icon name="external" size={13} /></a><a class="back-top" href="#top">{copy.footer.top}<Icon name="up" size={16} /></a></div>
     </footer>
   </div>
 </SiteLayout>

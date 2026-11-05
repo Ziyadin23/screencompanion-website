@@ -37,7 +37,7 @@ for (const locale of ['en', 'ru']) {
     assert.match(document.querySelector('.hero-note').textContent, locale === 'ru' ? /API-ключ/ : /API key/);
     assert.equal(document.querySelectorAll('.feature-item').length, 3);
     assert.equal(document.querySelectorAll('.steps > li').length, 3);
-    assert.equal(document.querySelectorAll('.faq-item').length, 6);
+    assert.equal(document.querySelectorAll('.faq-item').length, 8);
   });
 
   test(`${locale}: language links work independently of JavaScript`, async () => {
@@ -80,12 +80,20 @@ for (const locale of ['en', 'ru']) {
     const release = exe.match(/\/releases\/download\/(v[\w.-]+)\/SC-\1\.exe$/);
     assert.ok(release, 'The primary action must download a published executable');
     const version = release[1];
-    for (const link of document.querySelectorAll('a[href$=".exe"]')) assert.equal(link.getAttribute('href'), exe);
+    for (const link of document.querySelectorAll('.hero-actions a[href$=".exe"], .download-actions a[href$=".exe"]')) assert.equal(link.getAttribute('href'), exe);
     assert.equal(document.querySelector('a[href$=".zip"]').getAttribute('href'), exe.replace(/\.exe$/, '.zip'));
     assert.ok(document.querySelector('.release-version').textContent.includes(version));
     assert.ok(document.querySelector('.download-actions > p').textContent.includes(version));
     assert.equal(document.querySelector('.release-link').getAttribute('href'), `https://github.com/Ziyadin23/ScreenCompanion/releases/tag/${version}`);
-    assert.ok(!document.querySelector('.beta-link').getAttribute('href').includes('/releases/download/'));
+    const beta = document.querySelector('.beta-download');
+    const betaVersion = beta.querySelector('h3').textContent.match(/v(0\.5\.0-beta\.6)/)?.[1];
+    assert.ok(betaVersion, 'The published beta must be identified separately from stable');
+    const betaTag = `v${betaVersion}`;
+    const betaRelease = `https://github.com/Ziyadin23/ScreenCompanion/releases`;
+    assert.equal(document.querySelector('.beta-link').getAttribute('href'), `${betaRelease}/tag/${betaTag}`);
+    assert.ok(beta.querySelector(`a[href="${betaRelease}/download/${betaTag}/SC-Setup-${betaTag}.exe"]`));
+    assert.ok(beta.querySelector(`a[href="${betaRelease}/download/${betaTag}/SC-${betaTag}.zip"]`));
+    assert.ok(beta.querySelector(`a[href$="/blob/${betaTag}/docs/USER_GUIDE.md"]`));
   });
 
   test(`${locale}: accessible controls, illustrations, and section names`, async () => {

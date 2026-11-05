@@ -434,3 +434,6 @@ kbd { display: inline-flex; align-items: center; justify-content: center; min-wi
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
 html[data-input='keyboard'] *, html[data-input='keyboard'] *::before, html[data-input='keyboard'] *::after { animation: none !important; transition: none !important; }
+
+.beta-download { margin-top: 40px; padding-top: 24px; border-top: 1px solid currentColor; }
+.beta-download p { max-width: 80ch; margin: 16px 0; font-size: var(--small); }
