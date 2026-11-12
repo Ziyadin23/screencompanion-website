@@ -34,6 +34,8 @@ When reviewing visually, check English and Russian at 1440px, 1024px, 768px, 390
 
 The website does not collect API keys, capture screens, make AI requests, or store visitor data. The FAQ explains the desktop application's provider and data-processing requirements.
 
+The header/footer logo, browser icon, 180px touch icon and 512px link-preview image use the approved SC artwork from the application repository's `assets/brand/sc-icon.png` (master SHA-256 `014622a39d81ee6466668a4a5e5d7432e1ec7047b90bd22ca5ff88f4d0695ebf`). The `public/sc-icon-*` PNGs and `public/sc-icon.ico` are size exports of that artwork. Both languages use the configured deployment base path for these assets. Update the exports together when the approved master changes.
+
 ## Hosting
 
 The website is hosted on GitHub Pages:

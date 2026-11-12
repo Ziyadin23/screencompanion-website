@@ -55,7 +55,7 @@ svg { flex-shrink: 0; vertical-align: middle; }
 .skip-link:focus { transform: none; outline-color: var(--cyan); }
 .site-header { position: relative; z-index: 5; display: flex; align-items: center; gap: 28px; min-height: 100px; padding: 20px var(--gutter); background: var(--paper); }
 .brand { display: flex; align-items: center; gap: 14px; flex-shrink: 0; text-decoration: none; }
-.brand-mark { font-size: var(--title); font-weight: 850; letter-spacing: -.04em; line-height: 1; color: var(--ink); }
+.brand-mark { display: block; width: 32px; height: 32px; flex-shrink: 0; }
 .brand-name { font-size: var(--body); font-weight: 750; letter-spacing: -.03em; }
 .desktop-nav { display: flex; align-items: center; gap: 26px; margin-left: auto; }
 .desktop-nav a { display: inline-flex; align-items: center; min-height: 44px; text-decoration: none; white-space: nowrap; font-size: var(--small); font-weight: 600; }
@@ -198,7 +198,8 @@ kbd { display: inline-flex; align-items: center; justify-content: center; min-wi
 .download-actions > p { max-width: 60ch; font-size: var(--small); }
 
 .site-footer { padding: 58px var(--gutter) 32px; background: var(--cyan); }
-.footer-wordmark { display: block; font-size: clamp(34px, 9.4vw, 150px); font-weight: 650; line-height: 1.1; letter-spacing: -.04em; text-decoration: none; }
+.footer-wordmark { display: flex; align-items: center; gap: .18em; font-size: clamp(29px, 8vw, 128px); font-weight: 650; line-height: 1.1; letter-spacing: -.04em; text-decoration: none; }
+.footer-wordmark img { width: .75em; height: .75em; flex-shrink: 0; }
 .footer-main { display: flex; align-items: baseline; justify-content: space-between; gap: 24px 48px; margin-top: 48px; }
 .footer-main > p { max-width: 32ch; font-size: var(--body); }
 .footer-links { display: flex; flex-wrap: wrap; gap: 12px 24px; font-size: var(--small); }
@@ -415,7 +416,7 @@ kbd { display: inline-flex; align-items: center; justify-content: center; min-wi
 
 @media (max-width: 360px) {
   .brand-name { font-size: 13px; }
-  .brand-mark { font-size: 24px; }
+  .brand-mark { width: 28px; height: 28px; }
   .site-header { gap: 6px; }
   .brand { gap: 6px; }
   .language-switch a { min-width: 28px; }
