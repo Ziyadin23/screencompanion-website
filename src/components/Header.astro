@@ -5,6 +5,7 @@ import { product } from '../data/product';
 interface Props { locale: Locale }
 const { locale } = Astro.props;
 const copy = content[locale];
+const icon = `${import.meta.env.BASE_URL.replace(/\/?$/, '/')}sc-icon-180.png`;
 const links = [
   { href: '#features', label: copy.nav.features },
   { href: '#how-it-works', label: copy.nav.how },
@@ -13,7 +14,7 @@ const links = [
 ---
 <header class="site-header" id="top">
   <a class="brand" href={localPath(locale)} aria-label="ScreenCompanion">
-    <span class="brand-mark" aria-hidden="true">SC</span>
+    <img class="brand-mark" src={icon} width="32" height="32" alt="" />
     <span class="brand-name">ScreenCompanion</span>
   </a>
   <nav class="desktop-nav" aria-label={copy.nav.label}>

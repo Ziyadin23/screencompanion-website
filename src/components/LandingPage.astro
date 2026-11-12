@@ -9,6 +9,7 @@ import { product } from '../data/product';
 interface Props { locale: Locale }
 const { locale } = Astro.props;
 const copy = content[locale];
+const icon = `${import.meta.env.BASE_URL.replace(/\/?$/, '/')}sc-icon-180.png`;
 const previews = ['answer', 'question', 'settings'] as const;
 const ru = locale === 'ru';
 const privacyFacts = ru
@@ -86,7 +87,7 @@ const privacyFacts = ru
     </main>
 
     <footer class="site-footer">
-      <a class="footer-wordmark" href="#top" aria-label="ScreenCompanion">ScreenCompanion</a>
+      <a class="footer-wordmark" href="#top" aria-label="ScreenCompanion"><img src={icon} width="64" height="64" alt="" /><span>ScreenCompanion</span></a>
       <div class="footer-main"><p>{copy.footer.description}</p><nav class="footer-links" aria-label={copy.nav.footer}><a href={product.release.guide}>{copy.footer.guide}</a><a href={product.issues}>{copy.footer.issue}</a><a href={product.repository}>GitHub<Icon name="external" size={16} /></a></nav></div>
       <div class="footer-bottom"><a href="https://github.com/Ziyadin23">{copy.footer.madeBy}</a><a class="beta-link" href={product.beta.notes}>{copy.footer.beta}<Icon name="external" size={13} /></a><a class="back-top" href="#top">{copy.footer.top}<Icon name="up" size={16} /></a></div>
     </footer>

@@ -57,7 +57,7 @@ for (const locale of ['en', 'ru']) {
     const { document, url } = await loadPage(locale);
     const ids = [...document.querySelectorAll('[id]')].map(element => element.id);
     assert.equal(ids.length, new Set(ids).size, 'Page IDs must be unique');
-    for (const element of document.querySelectorAll('a[href], link[href], script[src]')) {
+    for (const element of document.querySelectorAll('a[href], link[href], script[src], img[src]')) {
       const href = element.getAttribute('href') || element.getAttribute('src');
       assert.ok(href && href !== '#', 'Links must have real destinations');
       const destination = new URL(href, url);
@@ -72,6 +72,23 @@ for (const locale of ['en', 'ru']) {
         assert.ok(target.getElementById(decodeURIComponent(destination.hash.slice(1))), `Missing fragment target ${href}`);
       }
     }
+  });
+
+  test(`${locale}: approved branding assets and sharing metadata resolve below the base path`, async () => {
+    const { document, url } = await loadPage(locale);
+    for (const selector of ['.brand img', '.footer-wordmark img']) {
+      const image = document.querySelector(selector);
+      assert.equal(image.getAttribute('alt'), '');
+      assert.equal(image.getAttribute('src'), `${base}sc-icon-180.png`);
+      assert.ok((await stat(outputFile(new URL(image.getAttribute('src'), url)))).isFile());
+    }
+    assert.equal(document.querySelector('link[rel="apple-touch-icon"]').getAttribute('href'), `${base}sc-icon-180.png`);
+    assert.ok(document.querySelector(`link[rel="icon"][href="${base}sc-icon-32.png"]`));
+    assert.ok(document.querySelector(`link[rel="icon"][href="${base}sc-icon.ico"]`));
+    const sharing = document.querySelector('meta[property="og:image"]').content;
+    assert.equal(new URL(sharing, url).pathname, `${base}sc-icon-512.png`);
+    assert.equal(document.querySelector('meta[name="twitter:image"]').content, sharing);
+    assert.ok((await stat(outputFile(new URL(sharing, url)))).isFile());
   });
 
   test(`${locale}: published download buttons and ZIP agree on their version`, async () => {
